@@ -1,2 +1,2 @@
 # Dice-game
-Dice game in javascript
+Build dice game to practice Javascript DOM menupulation 
