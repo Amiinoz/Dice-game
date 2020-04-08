@@ -2,16 +2,7 @@
 
 var scores, roundScore, activePlayer;
 
-scores = [0, 0];
-roundScore = 0;
-activePlayer = 0;
-
-document.querySelector(".dice").style.display = "none";
-
-document.getElementById("score-0").textContent = "0";
-document.getElementById("score-1").textContent = "0";
-document.getElementById("current-0").textContent = "0";
-document.getElementById("current-1").textContent = "0";
+init();
 
 document.querySelector(".btn-roll").addEventListener("click", function () {
   var dice = Math.floor(Math.random() * 6) + 1;
@@ -29,13 +20,11 @@ document.querySelector(".btn-roll").addEventListener("click", function () {
 });
 
 document.querySelector(".btn-hold").addEventListener("click", function () {
-  // add current score to global score
   scores[activePlayer] += roundScore;
-  // update the ui
+
   document.querySelector("#score-" + activePlayer).textContent =
     scores[activePlayer];
 
-  // check if the player has won
   if (scores[activePlayer] >= 20) {
     document.querySelector("#name-" + activePlayer).textContent = "YOU WIN!!!";
     document.querySelector(".dice").style.display = "none";
@@ -47,7 +36,6 @@ document.querySelector(".btn-hold").addEventListener("click", function () {
       .classList.remove("active");
   }
 
-  //next player
   nextPlayer();
 });
 
@@ -63,7 +51,17 @@ function nextPlayer() {
 
   document.querySelector(".dice").style.display = "none";
 }
-// document.querySelector("#current-" + activePlayer).textContent = dice;
-// document.querySelector('#current-' + activePlayer).innerHTML= '<em>' + dice + '</em>';
-// var x = document.querySelector("#score-0").textContent;
-// console.log(x);
+
+document.querySelector(".btn-new").addEventListener("click", init);
+
+function init() {
+  scores = [0, 0];
+  activePlayer = 0;
+  roundScore = 0;
+  document.querySelector(".dice").style.display = "none";
+
+  document.getElementById("score-0").textContent = "0";
+  document.getElementById("score-1").textContent = "0";
+  document.getElementById("current-0").textContent = "0";
+  document.getElementById("current-1").textContent = "0";
+}
