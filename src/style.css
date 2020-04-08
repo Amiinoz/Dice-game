@@ -68,7 +68,7 @@ body {
 }
 
 .active {
-	background-color: #f7f7f7;
+	background-color: #e9e8e8;
 }
 .active .player-name {
 	font-weight: 300;
